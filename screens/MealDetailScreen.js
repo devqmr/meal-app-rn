@@ -1,4 +1,4 @@
-import rect from React;
+import React from 'react';
 import { View, StyleSheet, Text, Button } from 'react-native';
 
 const MealDetailScreen = props => {
