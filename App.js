@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import MealsNavigator from './navigation/MealsNavigator';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -19,13 +20,7 @@ export default function App() {
         () => setFontLoaded(true)
       } />
   }
-  return (
-    <View style={styles.container}>
-      <Text style={{fontSize: 24}}>Open up App.js to start working on your app!</Text>
-      <Text style={{fontSize: 24, fontFamily: 'open-sans'}}>Open up App.js to start working on your app!</Text>
-      
-    </View>
-  );
+  return <MealsNavigator/>;
 }
 
 const styles = StyleSheet.create({
