@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
-import {CATEGORIES} from '../data/dummy-data'
+import { View, StyleSheet, Text, Button, Platform } from 'react-native';
+import { CATEGORIES } from '../data/dummy-data'
+import Colors from '../constants/Colors'
+
 
 const CategoriesMealScreen = props => {
 
@@ -10,7 +12,7 @@ const CategoriesMealScreen = props => {
     return (
         <View style={styles.screen}>
             <Text>The Categories Meal Screen</Text>
-           <Text>{selectedCategory.title}</Text>
+            <Text>{selectedCategory.title}</Text>
             <Button title="Go to Meal Details" onPress={() => {
                 props.navigation.navigate('MealDetail' + { catId });
             }} />
@@ -18,6 +20,14 @@ const CategoriesMealScreen = props => {
     );
 };
 
+
+CategoriesMealScreen.navigationOptions = navigationData => {
+    const catId = navigationData.navigation.getParam('categoryId');
+    const selectedCategory = CATEGORIES.find(cat => cat.id == catId);
+    return {
+        headerTitle: selectedCategory.title,
+    }
+}
 const styles = StyleSheet.create({
     screen: {
         flex: 1,

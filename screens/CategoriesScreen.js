@@ -29,13 +29,6 @@ const CategoriesScreen = props => {
     );
 };
 
-CategoriesScreen.navigationOptions = {
-    headerTitle: 'Meal Categories',
-    headerStyle: {
-      backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
-    },
-    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor
-  };
 
 
 
