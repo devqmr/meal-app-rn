@@ -1,32 +1,36 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, ImageBackground } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const MealItem = props => {
     return (
         <View style={styles.mealItem}>
-            <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
-                <ImageBackground
-                    source={{ uri: props.meal.imageUrl }}
-                    style={styles.bgImage} >
-                    <View style={styles.titleContainer}>
-                        <Text style={styles.title} numberOfLines={1}>
-                            {props.meal.title}
-                        </Text>
-                    </View>
-                </ImageBackground>
-            </View>
-            <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-                <Text>
-                    {props.meal.duration}m
+            <TouchableOpacity onPress={props.onPress}>
+                <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
+                    <ImageBackground
+                        source={{ uri: props.meal.imageUrl }}
+                        style={styles.bgImage} >
+                        <View style={styles.titleContainer}>
+                            <Text style={styles.title} numberOfLines={1}>
+                                {props.meal.title}
+                            </Text>
+                        </View>
+                    </ImageBackground>
+                </View>
+                <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+                    <Text>
+                        {props.meal.duration}m
                 </Text>
-                <Text>
-                    {props.meal.complexity}
-                </Text>
-                <Text>
-                    {props.meal.affordability}
-                </Text>
-            </View>
-        </View>)
+                    <Text>
+                        {props.meal.complexity}
+                    </Text>
+                    <Text>
+                        {props.meal.affordability}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        </View>
+    )
 };
 
 const styles = StyleSheet.create({

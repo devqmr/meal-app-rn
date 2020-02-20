@@ -14,7 +14,12 @@ const CategoriesMealScreen = props => {
 
     const renderMealItem = meal => {
         return (<MealItem meal={meal.item} onPress={() => {
-            console.warn("Meal >> " + meal.item.title)
+            props.navigation.navigate({
+                routeName: 'MealDetail',
+                params: {
+                    mealId: meal.item.id
+                }
+            });
         }} />);
     }
 
