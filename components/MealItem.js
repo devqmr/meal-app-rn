@@ -1,75 +1,79 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, ImageBackground } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground
+} from 'react-native';
+
+import DefaultText from './DefaultText';
 
 const MealItem = props => {
-    return (
-        <View style={styles.mealItem}>
-            <TouchableOpacity onPress={props.onPress}>
-                <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
-                    <ImageBackground
-                        source={{ uri: props.meal.imageUrl }}
-                        style={styles.bgImage} >
-                        <View style={styles.titleContainer}>
-                            <Text style={styles.title} numberOfLines={1}>
-                                {props.meal.title}
-                            </Text>
-                        </View>
-                    </ImageBackground>
-                </View>
-                <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-                    <Text>
-                        {props.meal.duration}m
+  return (
+    <View style={styles.mealItem}>
+      <TouchableOpacity onPress={props.onSelectMeal}>
+        <View>
+          <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
+            <ImageBackground
+              source={{ uri: props.image }}
+              style={styles.bgImage}
+            >
+              <View style={styles.titleContainer}>
+                <Text style={styles.title} numberOfLines={1}>
+                  {props.title}
                 </Text>
-                    <Text>
-                        {props.meal.complexity}
-                    </Text>
-                    <Text>
-                        {props.meal.affordability}
-                    </Text>
-                </View>
-            </TouchableOpacity>
+              </View>
+            </ImageBackground>
+          </View>
+          <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+            <DefaultText>{props.duration}m</DefaultText>
+            <DefaultText>{props.complexity.toUpperCase()}</DefaultText>
+            <DefaultText>{props.affordability.toUpperCase()}</DefaultText>
+          </View>
         </View>
-    )
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    mealItem: {
-        height: 200,
-        width: '100%',
-        backgroundColor: '#f5f5f5',
-        borderRadius: 10,
-        overflow: 'hidden'
-    },
-    mealRow: {
-        flexDirection: 'row'
-    },
-    mealHeader: {
-        height: '85%'
-    },
-    mealDetail: {
-        height: '15%',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 10
-    },
-    bgImage: {
-        height: '100%',
-        width: '100%',
-        justifyContent: 'flex-end'
-    },
-    titleContainer: {
-        width: '100%',
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        paddingVertical: 5,
-        paddingHorizontal: 15,
-    },
-    title: {
-        color: 'white',
-        textAlign: 'center',
-        fontSize: 20,
-        fontFamily: 'open-sans-bold',
-    }
+  mealItem: {
+    height: 200,
+    width: '100%',
+    backgroundColor: '#f5f5f5',
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginVertical: 10
+  },
+  bgImage: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'flex-end',
+  },
+  mealRow: {
+    flexDirection: 'row'
+  },
+  mealHeader: {
+    height: '85%'
+  },
+  mealDetail: {
+    paddingHorizontal: 10,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '15%'
+  },
+  titleContainer: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingVertical: 5,
+    paddingHorizontal: 12
+  },
+  title: {
+    fontFamily: 'open-sans-bold',
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center'
+  }
 });
 
 export default MealItem;
