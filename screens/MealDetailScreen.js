@@ -17,6 +17,7 @@ const MealDetailScreen = props => {
 
   const selectedMeal = MEALS.find(meal => meal.id === mealId);
 
+  
   return (
     <ScrollView contentContainerStyle={styles.screen}>
 
